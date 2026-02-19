@@ -35,32 +35,6 @@
     <!-- responsive footer css -->   
     <link href="css/responsive-footer.css" rel="stylesheet">
 
-    <style>
-        #toast-container {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 10000;
-        }
-        .toast-message {
-            min-width: 250px;
-            background-color: #333;
-            color: #fff;
-            padding: 15px 25px;
-            text-align: center;
-            font-weight: bold;
-            border-radius: 5px;
-            margin-top: 10px;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .toast-message.show { opacity: 1; }
-        .toast-message.success { background-color: #28a745; }
-        .toast-message.error { background-color: #dc3545; }
-    </style>
-
 </head>
 
 <body>
@@ -256,99 +230,6 @@
             </div>
         </section>
 
-        <!-- ADDITIONAL QUESTIONS
-        ================================================== -->
-        <section class="pb-lg-0 bg-light">
-            <div class="container">
-                <div class="section-heading">
-                    <span class="alt-font">Additional Questions</span>
-                    <h2>Leave a message</h2>
-                </div>
-                <div class="row justify-content-center align-items-center">
-                    <div class="col-lg-6 order-2 order-lg-1">
-                        <div class="bg-white p-1-9 p-xl-2-5 box-shadows mb-xl-4">
-                            <h3 class="h4">Can't find the answers ?</h3>
-                            <p class="mb-4">Fill all details to consult with our attorneys advices.</p>
-                            
-                            <form id="contactForm" class="quform" method="post" enctype="multipart/form-data">
-                                <div class="quform-elements">
-                                    <div class="row">
-
-                                        <!-- Begin Text input element -->
-                                        <div class="col-md-6">
-                                            <div class="quform-element">
-                                                <div class="quform-input">
-                                                    <input class="form-control" id="name" type="text" name="name" placeholder="Your name here*" required>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <!-- End Text input element -->
-
-                                        <!-- Begin Text input element -->
-                                        <div class="col-md-6">
-                                            <div class="quform-element">
-                                                <div class="quform-input">
-                                                    <input class="form-control" id="email" type="text" name="email" placeholder="Your email here*" required>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- End Text input element -->
-
-                                        <!-- Begin Text input element -->
-                                        <div class="col-md-6">
-                                            <div class="quform-element quform-select-replaced">
-                                                <div class="quform-input">
-                                                    <input class="form-control" id="subject" type="text" name="subject" placeholder="Your subject here*" required>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <!-- End Text input element -->
-
-                                        <!-- Begin Text input element -->
-                                        <div class="col-md-6">
-                                            <div class="quform-element">
-                                                <div class="quform-input">
-                                                    <input class="form-control" id="phone" type="text" name="phone" placeholder="Your phone here">
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <!-- End Text input element -->
-
-                                        <!-- Begin Textarea element -->
-                                        <div class="col-md-12">
-                                            <div class="quform-element">
-                                                <div class="quform-input">
-                                                    <textarea class="form-control" id="message" name="message" rows="3" placeholder="Tell us a few words*" required></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- End Textarea element -->
-
-                                        <!-- Begin Submit button -->
-                                        <div class="col-md-12">
-                                            <div class="quform-submit-inner">
-                                                <button class="butn md butn-hover" type="submit"><span>Send Message</span></button>
-                                            </div>
-                                            <div class="quform-loading-wrap text-start"><span class="quform-loading"></span></div>
-                                        </div>
-                                        <!-- End Submit button -->
-
-                                    </div>
-                                </div>
-                            </form>
-                            
-                        </div>
-                    </div>
-                    <div class="col-lg-6 order-1 order-lg-2">
-                        <img src="img/content/appointment.png" alt="..." class="d-none d-md-block mx-auto">
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- FOOTER
         ================================================== -->
         <footer class="bg-secondary pt-0">
@@ -465,71 +346,6 @@
     <!-- custom scripts -->
     <script src="js/main.js"></script>
 
-    <!-- all js include end -->
-    
-    <div id="toast-container"></div>
-
-    <script>
-        function showToast(message, type = 'success') {
-            const container = document.getElementById('toast-container');
-            const toast = document.createElement('div');
-            toast.className = `toast-message ${type}`;
-            toast.textContent = message;
-            
-            container.appendChild(toast);
-            
-            // Trigger reflow
-            void toast.offsetWidth; 
-            toast.classList.add('show');
-            
-            setTimeout(() => {
-                toast.classList.remove('show');
-                setTimeout(() => container.removeChild(toast), 500);
-            }, 3000);
-        }
-
-        async function submitContactForm(event) {
-            event.preventDefault();
-            
-            const form = event.target;
-            const formData = new FormData(form);
-            const loading = form.querySelector('.quform-loading-wrap');
-            
-            if (loading) loading.style.display = 'block';
-            
-            // Convert FormData to JSON object
-            const data = {};
-            for (let [key, value] of formData.entries()) {
-                data[key] = value;
-            }
-            
-            try {
-                const response = await fetch('/api/v1/contact', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data)
-                });
-                
-                if (response.ok) {
-                    showToast('Thank you for your message! We will get back to you soon.', 'success');
-                    form.reset();
-                } else {
-                    showToast('Sorry, there was an error sending your message. Please try again.', 'error');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                showToast('Sorry, there was an error sending your message. Please try again.', 'error');
-            } finally {
-                if (loading) loading.style.display = 'none';
-            }
-        }
-
-        // Attach event listener
-        document.getElementById('contactForm').addEventListener('submit', submitContactForm);
-    </script>
-    
 </body>
 
 </html>

@@ -646,8 +646,13 @@
                 data[key] = value;
             }
             
+            // Determine API URL: Use localhost:3001 if on Live Server (port 5500/5501), otherwise use relative path for Vercel/Production
+            const isLocalDev = window.location.port === '5500' || window.location.port === '5501';
+            const apiUrl = isLocalDev ? 'http://localhost:3001/api/v1/contact' : '/api/v1/contact';
+
             try {
                 const response = await fetch('/api/v1/contact', {
+                const response = await fetch(apiUrl, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
