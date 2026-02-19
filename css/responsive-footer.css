@@ -1,0 +1,240 @@
+/* Responsive Footer Styles for Spring Legal Consultancy */
+
+/* Base Footer Styles */
+footer {
+    padding: 60px 0 0;
+}
+
+/* Footer Logo Responsive */
+.footer-logo {
+    max-width: 180px;
+    width: 100%;
+    display: inline-block;
+}
+
+.footer-logo img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Footer Title Responsive */
+.footer-title {
+    font-size: 18px;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+}
+
+/* Contact List Responsive */
+.contact-list li {
+    font-size: 15px;
+    margin-bottom: 15px;
+    word-break: break-word;
+}
+
+/* Footer List Style Responsive */
+.footer-list-style1 li {
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+
+/* Social Icons Responsive */
+.footer-social-style1 li a i {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+}
+
+/* Footer Bar Responsive */
+.footer-bar {
+    padding: 15px 0;
+    margin-top: 50px;
+}
+
+.footer-bar p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Tablet Responsive (768px - 991px) */
+@media screen and (max-width: 991px) {
+    footer {
+        padding: 50px 0 0;
+    }
+    
+    .footer-title {
+        font-size: 17px;
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+    }
+    
+    .contact-list li {
+        font-size: 14px;
+        margin-bottom: 12px;
+    }
+    
+    .footer-list-style1 li {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    
+    .footer-bar {
+        margin-top: 40px;
+        padding: 12px 0;
+    }
+}
+
+/* Mobile Responsive (up to 767px) */
+@media screen and (max-width: 767px) {
+    footer {
+        padding: 40px 0 0;
+    }
+    
+    /* Stack footer columns with proper spacing */
+    footer .row > div[class*="col-"] {
+        margin-bottom: 30px;
+    }
+    
+    footer .row > div[class*="col-"]:last-child {
+        margin-bottom: 0;
+    }
+    
+    /* Center align all footer content on mobile */
+    footer .text-center {
+        text-align: center !important;
+    }
+    
+    /* Adjust footer title for mobile */
+    .footer-title {
+        font-size: 16px;
+        margin-bottom: 18px;
+        padding-bottom: 10px;
+        text-align: center;
+    }
+    
+    .footer-title:after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .footer-title:before {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+    }
+    
+    /* Contact list adjustments for mobile */
+    .contact-list {
+        text-align: center;
+    }
+    
+    .contact-list li {
+        font-size: 14px;
+        margin-bottom: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .contact-list li span {
+        margin-bottom: 5px;
+    }
+    
+    /* Footer list adjustments */
+    .footer-list-style1 {
+        text-align: center;
+    }
+    
+    .footer-list-style1 li {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+    
+    .footer-list-style1 li a:before {
+        display: none;
+    }
+    
+    /* Social icons larger for touch */
+    .footer-social-style1 li a i {
+        width: 44px;
+        height: 44px;
+        line-height: 44px;
+        font-size: 18px;
+    }
+    
+    /* Footer logo smaller on mobile */
+    .footer-logo {
+        max-width: 150px;
+    }
+    
+    /* Footer bar adjustments */
+    .footer-bar {
+        margin-top: 30px;
+        padding: 15px 0;
+    }
+    
+    .footer-bar p {
+        font-size: 13px;
+        padding: 0 15px;
+    }
+}
+
+/* Small Mobile (up to 575px) */
+@media screen and (max-width: 575px) {
+    footer {
+        padding: 30px 0 0;
+    }
+    
+    .footer-title {
+        font-size: 15px;
+    }
+    
+    .contact-list li {
+        font-size: 13px;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .contact-list li span {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+    
+    .footer-list-style1 li {
+        font-size: 13px;
+    }
+    
+    .footer-social-style1 li a i {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 16px;
+    }
+    
+    .footer-logo {
+        max-width: 130px;
+    }
+    
+    footer p {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+}
+
+/* Extra Large Desktop (1200px and above) */
+@media screen and (min-width: 1200px) {
+    .footer-logo {
+        max-width: 200px;
+    }
+    
+    .footer-title {
+        font-size: 20px;
+    }
+    
+    .contact-list li {
+        font-size: 16px;
+    }
+    
+    .footer-list-style1 li {
+        font-size: 16px;
+    }
+}
